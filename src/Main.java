@@ -1,4 +1,4 @@
-import creature.Cthulhu;
+import  creature.Cthulhu;
 import enums.Speed;
 import enums.StatusOfSea;
 import interfaces.Laugh;
@@ -10,6 +10,8 @@ import people.Johansen;
 import things.Noise;
 import yacht.Yacht;
 
+import java.util.function.Function;
+
 public class Main {
     public static void main(String[] args) {
         Johansen johansen = new Johansen();
@@ -17,11 +19,11 @@ public class Main {
         Yacht yacht = new Yacht(johansen, briden);
         Sea sea = new Sea(yacht);
         Coast coast = new Coast("Каменный");
-        World world = new World(sea);
+        World world = new World(sea, coast);
         Cthulhu cthulhu = new Cthulhu();
 
         johansen.run(yacht.getEngineRoom(), yacht.getDeck());
-        yacht.go(sea, Speed.SLOW, 6, true);
+        yacht.go(sea, Speed.SLOW, 7, true);
         cthulhu.beOnCoast(coast);
         cthulhu.slideDown(coast, sea);
         briden.lookBack(cthulhu, johansen);

@@ -27,17 +27,20 @@ public class Cthulhu implements GoInSea {
         System.out.printf("%s издал звук: %s.%n", this, mouth.mumble());
     }
     public void slideDown(Coast coast, Sea sea){
-        coast.deleteCthulhu();
+        coast.setCthulhu(null);
         sea.setCthulhu(this);
         System.out.printf("%s маслянисто сполз в воду и кинулся вдогонку.%n", this);
         go(sea, Speed.NORMAL, 2, true);
     }
-    public void go(Sea sea, Speed speed, int step, boolean isForward){
+    public void go(Sea sea, Speed speed, int time, boolean isForward){
         sea.createWaves();
         System.out.printf("%s поплыл в %s.%n", this, sea);
-        step = isForward ? step : -step;
-        for(int i=1; i<=speed.getAmount(); i++) {
+        int step = isForward ? speed.getAmount() : -speed.getAmount();
+        for(int i=1; i<=time; i++) {
             sea.setCoordinateCthulhu(sea.getCoordinateCthulhu() + step);
+            if(sea.getCoordinateYacht()==sea.getCoordinateCthulhu()) {
+                break;
+            }
         }
     }
     public void explode(){

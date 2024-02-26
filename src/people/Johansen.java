@@ -15,14 +15,15 @@ public class Johansen extends Person{
         super("Йохансен");
     }
     public void takeControl(Yacht yacht){
-        if (yacht.isNotOnYacht(this)) throw new PersonIsNotOnYacht(this);
+        if (yacht.isNotOnYacht(this)&&yacht.getDeck().isNotOnPlace(this)) throw new PersonIsNotOnYacht(this);
         else {
             yacht.getDeck().getWheel().setUnderControl(true);
             System.out.printf("Штурвал под контролем.%n");
         }
     }
     public void run(EngineRoom engineRoom, Deck deck){
-        int randomTime = (int) ( Math.random() * 16 );
+        Time time = x -> (int) (Math.random() * x) ;
+        int randomTime = time.random(16);
         System.out.printf("%s бегает между %s и %s %s секунд.%n", this, engineRoom, deck, randomTime);
         try {
             if (randomTime < 6) throw new NotEnoughTime(this);
@@ -62,4 +63,7 @@ public class Johansen extends Person{
             System.out.printf("Состояние %s: %s.%n", this, getMentalState());
         }
     }
+}
+interface Time{
+    int random(int x);
 }

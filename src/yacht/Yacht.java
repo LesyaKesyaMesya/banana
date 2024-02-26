@@ -30,12 +30,12 @@ public class Yacht implements GoInSea {
     public int getCapacity(){
         return team.length;
     }
-    public void go(Sea sea, Speed speed, int step, boolean isForward){
+    public void go(Sea sea, Speed speed, int time, boolean isForward){
         if (engineRoom.getMotor().getIsWork() && deck.getWheel().getUnderControl()) {
             sea.createWaves();
             System.out.printf("Яхта поплыла в %s.%n", sea);
-            step = isForward? step : -step;
-            for(int i=1; i<=speed.getAmount(); i++) {
+            int step = isForward? speed.getAmount() : -speed.getAmount();
+            for(int i=1; i<=time; i++) {
                 sea.setCoordinateYacht(sea.getCoordinateYacht() + step);
                 if(sea.getCoordinateYacht()==sea.getCoordinateCthulhu()) {
                     break;

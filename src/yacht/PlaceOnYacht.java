@@ -34,4 +34,12 @@ public abstract class PlaceOnYacht {
             }
         }
     }
+    public boolean isNotOnPlace(Person person){
+        for(int i = 0; i<people.length; i++){
+            if (person.equals(people[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

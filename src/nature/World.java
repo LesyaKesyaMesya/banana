@@ -4,8 +4,10 @@ import people.Johansen;
 
 public class World {
     private String date;
+    private final Coast coast;
     private final Sea sea;
-    public World(Sea sea){
+    public World(Sea sea, Coast coast){
+        this.coast = coast;
         this.sea = sea;
         date = "неизвестный день";
     }

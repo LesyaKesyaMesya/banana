@@ -18,6 +18,10 @@ public class Sea {
     public void setCoordinateCthulhu(int coordinateCthulhu) {
         this.coordinateCthulhu = coordinateCthulhu;
         System.out.printf("Координата ктулху: %s.%n", coordinateCthulhu );
+        if (coordinateCthulhu == coordinateYacht) {
+            System.out.printf("%s столкнулась с %s.%n", yacht, cthulhu);
+            cthulhu.explode();
+        }
     }
 
     public void setCoordinateYacht(int coordinateYacht){

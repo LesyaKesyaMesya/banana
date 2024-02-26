@@ -11,9 +11,6 @@ public class Coast {
     public void setCthulhu(Cthulhu cthulhu){
         this.cthulhu = cthulhu;
     }
-    public void deleteCthulhu(){
-        cthulhu = null;
-    }
     @Override
     public String toString(){
         return String.format("%s берег", material);
